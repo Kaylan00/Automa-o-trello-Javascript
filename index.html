@@ -1,26 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Card no Trello</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
+
 <body>
     <div class="container">
         <h1>Criar Card no Trello</h1>
+        <h2 id="board-title">Board selecionado: </h2>
+        <label for="listao">Selecione a Lista:</label>
+        <select id="listao"></select>
+
         <label for="titulo">Título:</label>
-        <input type="text" id="titulo" placeholder="Digite o título do card">
+        <input type="text" id="titulo" placeholder="Digite o título do card" required>
 
         <label for="descricao">Descrição:</label>
         <textarea id="descricao" placeholder="Digite a descrição do card"></textarea>
 
-        <label for="lista">Lista:</label>
-        <input type="text" id="lista" placeholder="Digite o nome da lista do Trello">
+        <div class="etiquetas">
+            <label for="etiqueta">Etiqueta:</label>
+            <select id="etiqueta">
+                <option value=""></option>
+            </select>
+        </div>
 
-        <button onclick="criarCard()">Criar Card</button>
+        <div class="checklist">
+            <label for="checklist">Checklist:</label>
+            <input type="text" id="checklist" placeholder="Digite o nome do item">
+            <div id="checklist-container"></div>
+            <button onclick="adicionarChecklist()">Adicionar Item</button>
+            <button class="buttons-see" id="verMais" style="display: none; " onclick="verMaisChecklist()">Ver
+                mais</button>
+            <button class="buttons-see" id="verMenos" style="display: none;" onclick="verMenosChecklist()">Ver
+                menos</button>
+        </div>
+        <div>
+            <span>Adicionar anexo para capa</span>
+            <label for="anexo" class="anexo-label">
+                <span>Selecionar Arquivo</span>
+                <input type="file" id="anexo" accept="image/*" onchange="showImage(this)">
+            </label>
+            <div id="image-preview-container">
+                <span>Imagem selecionada:</span>
+                <img id="image-preview" src="#" alt="Preview da Imagem">
+            </div>
+
+        </div>
+      
+
+        <button onclick="createCard()">Criar Card</button>
     </div>
 
-    <script src="script.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
+
 </html>
